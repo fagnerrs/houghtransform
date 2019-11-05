@@ -1,15 +1,22 @@
 import numpy as np
 from Hough import *
+from HoughParabola import *
 import cv2
 from matplotlib import pyplot as plt
 
 # Create binary image and call hough_line
-#image = np.array([[1, 0, 0],
-#                  [0, 1, 0],
-#                  [0, 0, 1]])
+image = np.array([[1, 0, 0, 0, 0, 0, 0, 0, 1],
+                  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                  [0, 0, 0, 0, 1, 0, 0, 0, 0]])
 
 #image = np.zeros((50,50))
 #image[10:40, 10:40] = np.eye(30)
+
+hough_parabola(image, [0, 90, 1])
+
+exit()
+
+##--------------------------------------------
 
 img = cv2.imread('images/exemplo1.jpg')
 image = cv2.bilateralFilter(img, 35, 150, 200)
