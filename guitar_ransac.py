@@ -5,9 +5,12 @@ import time
 import random
 import optparse
 import math
+from parabola_mls import *
+from scipy.misc import *
 
 import cv2
-import numpy as np
+
+parabolaMls = ParabolaMls()
 
 def ls_fit(points):
 
@@ -29,26 +32,6 @@ def ls_fit(points):
     return m, c
 
 
-def ransac_polyfit(points, order=3, n=3, k=5, t=0.1, d=100, f=0.8):
-    # Thanks https://en.wikipedia.org/wiki/Random_sample_consensus
-
-    # n – minimum number of data points required to fit the model
-    # k – maximum number of iterations allowed in the algorithm
-    # t – threshold value to determine when a data point fits a model
-    # d – number of close data points required to assert that a model fits well to data
-    # f – fraction of close data points required
-
-    x = [x[0] for x in points]
-    y = [y[0] for y in points]
-
-
-    bestfit = np.polyfit(x, y, order)
-
-    return bestfit
-
-#
-#   LMS model used for RANSAC implementation
-
 class LmsModel:
 
     def __init__(self):
@@ -56,17 +39,24 @@ class LmsModel:
 
     def model(self, data):
         # calculate a model from a given dataset
-        print(ransac_polyfit(data))
 
-        return ls_fit(data)
+        #return ls_fit(data)
+        return parabolaMls.getModel(data)
 
     def fit(self, x, y, model):
-        # Distance from an x,y point to a given model
+
+        def func2(d, px, py, a, b, c):
+            return np.sqrt((d - px) ** 2 + (a * (px ** 2) + b * px + c - py) ** 2)
+
+        # Distance from an x, y point to a given model
         # see http://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line
         # model in y=mx+c form, so
         # ax + by + c = 0, a==m, b==-1, c==c
-        m, c = model
-        d = math.fabs((m * x) - y + c) / math.sqrt((m * m) + 1)
+        a, b, c, cost = model
+        d = derivative(func2, 1, dx=1e-6, args=(x, y, a, b, c))
+
+        #m, c = model
+        #d = math.fabs((m * x) - y + c) / math.sqrt((m * m) + 1)
         return d
 
     def error(self, model, data):
@@ -85,7 +75,7 @@ class LmsModel:
 def ransac(data, model, n, k, t, d, model_iter=None, all_results=False):
     # see http://en.wikipedia.org/wiki/RANSAC#The_algorithm
 
-    data = [tuple(x[0]) for x in data]
+    data = [tuple(x[0].astype(int)) for x in data]
 
     if len(data) < n:
         if all_results:
@@ -292,7 +282,7 @@ while frame < 24:
         #paint(draw, f, colour, csize=2)
 
         if (1 == 1):
-            n = 3 # min fit
+            n = 6 # min fit
             k = 1000 # iterations
             t = 0.5 # threshold
             d = 3 # min number of points within threshold
@@ -312,7 +302,7 @@ while frame < 24:
 
             if len(results):
                 colour = 0, 255, 128
-                show_models(draw, results, colour)
+               # show_models(draw, results, colour)
 
     image_path = "images/guitar_result.png"
 

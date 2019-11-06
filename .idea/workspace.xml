@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d075ced5-3013-4f07-8370-0a3a5ad70225" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Parabola.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accumulator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guitar_ransac.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parabola_polyfit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quadratic_parabola.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ransac.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ransac2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ransacUtils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/derivative.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HoughLine.py" beforeDir="false" afterPath="$PROJECT_DIR$/HoughLine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HoughParabola.py" beforeDir="false" afterPath="$PROJECT_DIR$/HoughParabola.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guitar_ransac.py" beforeDir="false" afterPath="$PROJECT_DIR$/guitar_ransac.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/guitar_result.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parabola_mls.py" beforeDir="false" afterPath="$PROJECT_DIR$/parabola_mls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quadratic_parabola.py" beforeDir="false" afterPath="$PROJECT_DIR$/quadratic_parabola.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +44,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.quadratic_parabola">
+  <component name="RunManager" selected="Python.guitar_ransac">
     <configuration name="HoughParabola" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="OpenCvClass" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -63,6 +58,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HoughParabola.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="derivative" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="OpenCvClass" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/derivative.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -134,34 +150,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ransac" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="OpenCvClass" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ransac.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.guitar_ransac" />
+        <item itemvalue="Python.derivative" />
         <item itemvalue="Python.quadratic_parabola" />
         <item itemvalue="Python.parabola_polyfit" />
-        <item itemvalue="Python.guitar_ransac" />
         <item itemvalue="Python.HoughParabola" />
-        <item itemvalue="Python.ransac" />
       </list>
     </recent_temporary>
   </component>
@@ -216,26 +211,6 @@
           <line>73</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/guitar_ransac.py</url>
-          <line>87</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/guitar_ransac.py</url>
-          <line>103</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/guitar_ransac.py</url>
-          <line>115</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/quadratic_parabola.py</url>
-          <line>39</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -245,14 +220,5 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="len(thetas)" language="Python" />
-        <watch expression="len(accumulator[0])" language="Python" />
-        <watch expression="accumulator[x, y, p]" language="Python" />
-        <watch expression="indices.shape" language="Python" />
-        <watch expression="len(nonzero[1])" language="Python" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

@@ -49,7 +49,7 @@ def solution():
 
   # Drawing Fitted Lines
   x = np.linspace(-10, 10) # draw 100 continuous points directly from 0 to 15
-  y = a * x * x + b * x + c # # function
+  y = a * (x**2) + b * x + c # # function
   plt.plot(x, y, color="red",label="solution line",linewidth=2)
   plt.legend ()# Draw Legend
   plt.show()
