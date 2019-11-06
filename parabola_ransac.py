@@ -3,10 +3,12 @@
 import sys
 import time
 import random
+from random import randint
 import optparse
 import math
 from parabola_mls import *
 from scipy.misc import *
+from matplotlib import pyplot as plt
 
 import cv2
 
@@ -39,21 +41,18 @@ class LmsModel:
 
     def model(self, data):
         # calculate a model from a given dataset
-
-        #return ls_fit(data)
         return parabolaMls.getModel(data)
 
     def fit(self, x, y, model):
 
-        def func2(d, px, py, a, b, c):
-            return np.sqrt((d - px) ** 2 + (a * (px ** 2) + b * px + c - py) ** 2)
 
         # Distance from an x, y point to a given model
         # see http://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line
         # model in y=mx+c form, so
         # ax + by + c = 0, a==m, b==-1, c==c
         a, b, c, cost = model
-        d = derivative(func2, 1, dx=1e-6, args=(x, y, a, b, c))
+
+        d = np.absolute(a * (x ** 2) + b * x + c - y)
 
         #m, c = model
         #d = math.fabs((m * x) - y + c) / math.sqrt((m * m) + 1)
@@ -72,12 +71,10 @@ class LmsModel:
 #
 #
 
-def ransac(data, model, n, k, t, d, model_iter=None, all_results=False):
+def ransac(data, model, minFit, iteractions, threshold, minpoints, model_iter=None, all_results=False):
     # see http://en.wikipedia.org/wiki/RANSAC#The_algorithm
 
-    data = [tuple(x[0].astype(int)) for x in data]
-
-    if len(data) < n:
+    if len(data) < minFit:
         if all_results:
             return []
         return None, None, None
@@ -91,8 +88,17 @@ def ransac(data, model, n, k, t, d, model_iter=None, all_results=False):
     if model_iter is None:
         def iterator():
             # Standard RANSAC iterator
-            for i in range(k):
-                sample = random.sample(data, n)
+            for i in range(iteractions):
+                #val = random.choice(len(data))
+
+                sample = []
+
+                #jump = randint(0, int(len(data)))
+                jump = 0
+
+                for index in range(minFit):
+                    sample.append(data[index - jump])
+
                 maybe_model = model.model(sample)
                 yield maybe_model
     else:
@@ -107,10 +113,11 @@ def ransac(data, model, n, k, t, d, model_iter=None, all_results=False):
 
         for xy in data:
             f = model.fit(xy[0], xy[1], maybe_model)
-            if f < t:
+
+            if f < threshold:
                 consensus_set.append(xy)
 
-        if len(consensus_set) > d:
+        if len(consensus_set) > minpoints:
             this_model = model.model(consensus_set)
 
             if models.get(this_model):
@@ -181,23 +188,28 @@ def track(image):
     min_distance = 10
 
     # Apply edge detection method on the image
-    #f = cv2.Canny(grey, 50, 20, apertureSize=3)
-    f = cv2.goodFeaturesToTrack(grey, corners, quality, min_distance)
+    f = cv2.Canny(grey, 50, 20, apertureSize=3)
+    #f = cv2.goodFeaturesToTrack(grey, corners, quality, min_distance)
 
-    try:
-      criteria = cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 0.01
-      cv2.cornerSubPix(grey, f, (5,5), (-1,-1), criteria)
-    except:
-      print('erro 1')
-      return []
+    nonzero = np.nonzero(f)
 
-    return f
+    list = []
+
+    for index in range(len(nonzero[0])):
+        list.append([nonzero[1][index], nonzero[0][index]])
+        print([nonzero[1][index], nonzero[0][index]])
+
+    return list
 
 #
 #
 
 def canny(im):
+
     gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+
+    gray = cv2.bilateralFilter(gray, 35, 150, 200)
+
     min_thresh, max_thresh, apertureSize = 100, 200, 3
     edges = cv2.Canny(gray, min_thresh, max_thresh, apertureSize = apertureSize)
 
@@ -206,12 +218,26 @@ def canny(im):
 #
 #
 
-def draw_line(draw, m, c, colour):
-    x0 = 0
-    x1 = draw.shape[1]
-    y0 = c
-    y1 = (m * x1) + c
-    cv2.line(draw, (0, int(y0)), (int(x1), int(y1)), color=colour)
+def draw_line(draw, point, model, colour):
+
+    a, b, c, cost = model
+
+    x0 = point[0][0]
+    y0 = point[0][1]
+
+    x1 = point[1][0]
+
+    pointsX = np.linspace(x0, x1, 5)
+
+    x0 = pointsX[0]
+    y0 = a * (x0 ** 2) + b * x0 + c
+
+    #for index in range(1, len(pointsX)):
+    #    x = pointsX[index]
+    #    y = a * (x ** 2) + b * x + c
+
+    #    cv2.line(draw, (int(x0), int(y0)), (int(x), int(y)), color=colour)
+
 
 def overlap(d, l):
     for item in l:
@@ -221,22 +247,25 @@ def overlap(d, l):
 
 def show_models(draw, results, colour):
     done = {}
-    print("*" * 20)
+
     for error, model, points in results:
+
+        print()
+
         if overlap(done, points):
             continue
-        m, c = model
-        draw_line(draw, m, c, colour)
+
+        draw_line(draw, points, model, colour)
+
+        a, b, c, cost = model
 
         for point in points:
             done[point] = True
 
-        #points = [ [(x,y,)] for x,y in points ]
-        #paint(draw, points, colour)
-        print(error, model)
         points.sort()
         points.reverse()
         start = points[0]
+
         for point in points[1:]:
             d = distance(start[0], start[1], point[0], point[1])
             print(d)
@@ -259,14 +288,19 @@ frame = 0
 # else:
 #im = cv2.imread('images/parabola_exemplo1.png')
 #im = cv2.imread('images/guitar2.jpg')
-im = cv2.imread('images/exemplo1_th1.jpg')
+im = cv2.imread('images/parabola_exemplo1.png')
 
 #filter_im = cv2.bilateralFilter(im, 35, 150, 200)
+
+
 
 edges = canny(im)
 
 filtered = edges
 filtered = cv2.cvtColor(filtered, cv2.COLOR_GRAY2BGR)
+
+
+
 
 while frame < 24:
 
@@ -277,13 +311,22 @@ while frame < 24:
 
     if 1:
         #f = np.nonzero(im)
-        f = track(im)
+        f = track(filtered)
+
+        #for xy in f:
+         #   plt.plot(xy[0], xy[1], 'r*')
+
+        #plt.imshow(im, interpolation='nearest')
+        #plt.show()
+
+
+
         colour = 0, 0, 255
         #paint(draw, f, colour, csize=2)
 
         if (1 == 1):
-            n = 6 # min fit
-            k = 1000 # iterations
+            n = 10 # min fit
+            k = 5 # iterations
             t = 0.5 # threshold
             d = 3 # min number of points within threshold
 
@@ -302,7 +345,7 @@ while frame < 24:
 
             if len(results):
                 colour = 0, 255, 128
-               # show_models(draw, results, colour)
+                show_models(draw, results, colour)
 
     image_path = "images/guitar_result.png"
 

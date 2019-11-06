@@ -21,7 +21,7 @@ class ParabolaMls:
   def getModel(self, data):
 
     X = np.array([x[0] for x in data])
-    Y = np.array([y[0] for y in data])
+    Y = np.array([y[1] for y in data])
 
     model = self.__solveModel(X, Y)
     a, b, c = model[0]

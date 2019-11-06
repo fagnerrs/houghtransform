@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d075ced5-3013-4f07-8370-0a3a5ad70225" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/derivative.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guitar_ransac.py" beforeDir="false" afterPath="$PROJECT_DIR$/guitar_ransac.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/guitar_result.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/derivative.py" beforeDir="false" afterPath="$PROJECT_DIR$/derivative.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guitar_ransac.py" beforeDir="false" afterPath="$PROJECT_DIR$/parabola_ransac.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parabola_mls.py" beforeDir="false" afterPath="$PROJECT_DIR$/parabola_mls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parabola_polyfit.py" beforeDir="false" afterPath="$PROJECT_DIR$/parabola_polyfit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quadratic_parabola.py" beforeDir="false" afterPath="$PROJECT_DIR$/quadratic_parabola.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,6 +23,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -99,7 +100,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/guitar_ransac.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parabola_ransac.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -153,8 +154,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.guitar_ransac" />
-        <item itemvalue="Python.derivative" />
         <item itemvalue="Python.quadratic_parabola" />
+        <item itemvalue="Python.derivative" />
         <item itemvalue="Python.parabola_polyfit" />
         <item itemvalue="Python.HoughParabola" />
       </list>
@@ -210,6 +211,21 @@
           <url>file://$PROJECT_DIR$/ransacUtils.py</url>
           <line>73</line>
           <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/parabola_ransac.py</url>
+          <line>54</line>
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/parabola_ransac.py</url>
+          <line>63</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/parabola_ransac.py</url>
+          <line>114</line>
+          <option name="timeStamp" value="88" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
