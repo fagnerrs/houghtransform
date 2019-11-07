@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d075ced5-3013-4f07-8370-0a3a5ad70225" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ListQuery.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/derivative.py" beforeDir="false" afterPath="$PROJECT_DIR$/derivative.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/guitar_result.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/parabola_ransac.py" beforeDir="false" afterPath="$PROJECT_DIR$/parabola_ransac.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quadratic_parabola.py" beforeDir="false" afterPath="$PROJECT_DIR$/quadratic_parabola.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hough.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hough.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HoughLine.py" beforeDir="false" afterPath="$PROJECT_DIR$/HoughLine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parabola.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parabola.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,8 +44,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.guitar_ransac">
-    <configuration name="ListQuery" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.Parabola">
+    <configuration name="Hough" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="OpenCvClass" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -58,7 +57,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ListQuery.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Hough.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -67,7 +66,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="derivative" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="HoughLine" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="OpenCvClass" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -79,7 +78,49 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/derivative.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HoughLine.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Image" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="OpenCvClass" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Image.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Parabola" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="OpenCvClass" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Parabola.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -109,55 +150,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="parabola_polyfit" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="OpenCvClass" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parabola_polyfit.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="quadratic_parabola" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="OpenCvClass" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/quadratic_parabola.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Parabola" />
+        <item itemvalue="Python.Hough" />
+        <item itemvalue="Python.Image" />
+        <item itemvalue="Python.HoughLine" />
         <item itemvalue="Python.guitar_ransac" />
-        <item itemvalue="Python.quadratic_parabola" />
-        <item itemvalue="Python.derivative" />
-        <item itemvalue="Python.ListQuery" />
-        <item itemvalue="Python.parabola_polyfit" />
       </list>
     </recent_temporary>
   </component>

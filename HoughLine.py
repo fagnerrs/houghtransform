@@ -73,5 +73,6 @@ for index in range(len(peeks[0])):
 
   cv2.line(img, pt1, pt2, (0, 0, 255), 1, cv2.LINE_AA)
 
+img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
 plt.imshow(img, interpolation='nearest')
 plt.show()
