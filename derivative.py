@@ -20,5 +20,11 @@ def func2(d, px, py , a, b, c):
 print(derivative(func2, 1, dx=1e-6, args=(0, 0, 1, 1, 0)))
 print(derivative(func1, 1, dx=1e-6))
 
-data = [[1,1],[2, 2], [4, 4,] [5,5],[6,6]]
-print(random.sample(data, 3))
+#data = [[1,1],[2, 2], [4, 4,] [5,5],[6,6]]
+#print(random.sample(data, 3))
+
+
+arr = np.array([[1,2,3],
+                [4,5,6]])
+
+print(arr.T)

@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d075ced5-3013-4f07-8370-0a3a5ad70225" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ListQuery.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/derivative.py" beforeDir="false" afterPath="$PROJECT_DIR$/derivative.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guitar_ransac.py" beforeDir="false" afterPath="$PROJECT_DIR$/parabola_ransac.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parabola_mls.py" beforeDir="false" afterPath="$PROJECT_DIR$/parabola_mls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parabola_polyfit.py" beforeDir="false" afterPath="$PROJECT_DIR$/parabola_polyfit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/guitar_result.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parabola_ransac.py" beforeDir="false" afterPath="$PROJECT_DIR$/parabola_ransac.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quadratic_parabola.py" beforeDir="false" afterPath="$PROJECT_DIR$/quadratic_parabola.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,7 +46,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.guitar_ransac">
-    <configuration name="HoughParabola" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="ListQuery" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="OpenCvClass" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -58,7 +58,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HoughParabola.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ListQuery.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -156,8 +156,8 @@
         <item itemvalue="Python.guitar_ransac" />
         <item itemvalue="Python.quadratic_parabola" />
         <item itemvalue="Python.derivative" />
+        <item itemvalue="Python.ListQuery" />
         <item itemvalue="Python.parabola_polyfit" />
-        <item itemvalue="Python.HoughParabola" />
       </list>
     </recent_temporary>
   </component>
@@ -212,21 +212,6 @@
           <line>73</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/parabola_ransac.py</url>
-          <line>54</line>
-          <option name="timeStamp" value="86" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/parabola_ransac.py</url>
-          <line>63</line>
-          <option name="timeStamp" value="87" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/parabola_ransac.py</url>
-          <line>114</line>
-          <option name="timeStamp" value="88" />
-        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -236,5 +221,11 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="b * x" language="Python" />
+        <watch expression="models" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

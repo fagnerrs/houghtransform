@@ -4,20 +4,25 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy import linalg
 from scipy.optimize import leastsq
 
 
 # Data to be fitted
-#X = np.array([1,2,3,4,5,6])
-#Y = np.array([9.1,18.3,32,47,69.5,94.8])
+#X = np.array([0, 100, 200])
+#Y = np.array([100, 10 ,100])
 
-X = np.array([735, 736, 737, 738, 739, 734, 740, 741, 733, 736])
-Y = np.array([168, 168, 168, 168, 168, 169, 169, 169, 170, 170])
+X = np.array([376, 727, 413, 371, 376, 380, 704, 382, 742, 384])
+Y = np.array([260, 269, 522, 219, 375, 400, 340, 352, 176, 390])
 
+
+M = np.array([[376, 727, 413, 371, 376, 380, 704, 382, 742, 384],
+               [260, 269, 522, 219, 375, 400, 340, 352, 176, 390]])
 
 # Standard Form of Quadratic Function
 def func(params, x):
  a, b, c = params
+ print(x)
  return a*(x**2) + b*x + c
 
 # Error function, that is, the difference between the value obtained by fitting curve and the actual value
@@ -27,7 +32,7 @@ def error(params, x, y):
 
 # Solving parameters
 def slovePara():
- p0 = [10, 10, 10]
+ p0 = [1, 1, 1]
 
  Para = leastsq(error, p0, args=(X, Y))
  return Para
@@ -49,13 +54,15 @@ def solution():
   plt.scatter(X, Y, color="green", label="sample data", linewidth=2)
 
   # Drawing Fitted Lines
-  x = np.linspace(0, 1000) # draw 100 continuous points directly from 0 to 15
+  X = np.linspace(0, 1000) # draw 100 continuous points directly from 0 to 15
 
 
-  y = a * (x**2) + b * x + c # # function
-  plt.plot(x, y, color="red",label="solution line",linewidth=2)
+
+  plt.plot(X, y, color="red",label="solution line",linewidth=2)
   plt.legend ()# Draw Legend
   plt.show()
+
+
 
 
 solution()
