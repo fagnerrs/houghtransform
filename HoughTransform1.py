@@ -7,7 +7,7 @@ import numpy as np
 # which operations are to be done.
 # Make sure that the image is in the same
 # directory in which this python program is
-img = cv2.imread('images/exemplo1.jpg', cv2.IMREAD_GRAYSCALE)
+img = cv2.imread('images/exemplo2.jpg', cv2.IMREAD_GRAYSCALE)
 
 print('Img size', img.shape)
 
@@ -18,7 +18,7 @@ edges = cv2.Canny(img, 50, 20, apertureSize=3)
 cdst = cv2.cvtColor(edges, cv2.COLOR_GRAY2BGR)
 
 # This returns an array of r and theta values
-lines = cv2.HoughLines(edges, 1, np.pi/180, 150)
+lines = cv2.HoughLines(edges, 1, 360, 150)
 
 # The below for loop runs till r and theta values
 # are in the range of the 2d array

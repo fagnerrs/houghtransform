@@ -8,7 +8,7 @@ class Hough:
 
   def find_lines(self, image, edges, rangeTheta):
     accumulator, thetas, rhos =  self.hough_transformation(edges, rangeTheta)
-    self.draw_lines(image, accumulator, rhos, thetas)
+    self.draw_lines(image, edges, accumulator, rhos, thetas)
 
   def hough_transformation(self, edges, rangeTheta):
 
@@ -49,7 +49,7 @@ class Hough:
 
     return accum, thetas, rhos
 
-  def draw_lines(self, image, accumulator, rhos, thetas):
+  def draw_lines(self, image, edges, accumulator, rhos, thetas):
 
     # Easiest peak finding based on max votes
     idx = np.argmax(accumulator)
@@ -81,10 +81,6 @@ class Hough:
       a = np.sin(theta)
       b = np.cos(theta)
 
-      # m = -(1/np.tan(theta))
-      # c = rho * (1/np.sin(theta))
-
-      # ptY = m * x + c
 
       pt1 = (int(x + 1000 * -a), int(y + 1000 * b))
       pt2 = (int(x - 1000 * -a), int(y - 1000 * b))
@@ -92,6 +88,10 @@ class Hough:
       print("ptX={1}, ptY={0:}".format(pt1, pt2))
 
       cv2.line(image, pt1, pt2, (0, 0, 255), 1, cv2.LINE_AA)
+      cv2.line(edges, pt1, pt2, (0, 0, 0), 15, cv2.LINE_AA)
 
+    #plt.imshow(edges, interpolation='nearest')
     plt.imshow(image, interpolation='nearest')
     plt.show()
+
+    return image, edges
