@@ -6,10 +6,12 @@ from matplotlib import pyplot as plt
 
 class Image:
 
-  def getEdges(self, img):
+  def getEdges(self, path):
+
+    img = cv2.imread(path)
 
     smooth = cv2.bilateralFilter(img, 35, 150, 200)
 
     edges = cv2.Canny(smooth, 50, 20, apertureSize=3)
 
-    return edges
+    return img, edges

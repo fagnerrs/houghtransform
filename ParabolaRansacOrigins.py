@@ -14,6 +14,8 @@ import cv2
 
 parabolaMls = ParabolaMls()
 
+radonSelections = []
+
 class LmsModel:
 
     def __init__(self):
@@ -35,6 +37,9 @@ def ransac(data, model, minFit, iteractions, threshold, minpoints):
     def iterator():
         for i in range(iteractions):
             sample = random.sample(data, minFit)
+            for p in sample:
+                radonSelections.append(p)
+
             maybe_model = model.model(sample)
             yield maybe_model
 
@@ -112,10 +117,8 @@ def track(image):
 
     for index in range(len(nonzero[0])):
         list.append([nonzero[1][index], nonzero[0][index]])
-        print([nonzero[1][index], nonzero[0][index]])
 
     return list
-
 #
 #
 
@@ -130,14 +133,24 @@ def canny(im):
 
     return edges
 
-def plotParabola(img, model):
-    a, b, c, cost = model
+def plotParabola(img, bestfit):
+    a, b, c, cost = bestfit[0]
+
     #X = np.array([x[0] for x in inliners])
-    X = np.linspace(0, 900)  # draw 100 continuous points directly from 0 to 15
-    for x in X:
-      y = a * (x ** 2) + b * x + c
-      xy = int(x), int(y)
-      cv2.circle(img, xy, 2, color=(255,0,0), thickness=2)
+    X = np.linspace(0, 600, dtype=int)  # draw 100 continuous points directly from 0 to 15
+    for i in range(len(X) - 1):
+      y1 = a * (X[i] ** 2) + b * X[i] + c
+      y2 = a * (X[i + 1] ** 2) + b * X[i + 1] + c
+
+      x1 = X[i]
+      x2 = X[i + 1]
+
+      cv2.line(img, (x1, int(y1)), (x2, int(y2)), color=(33,231,29), thickness=5)
+
+      #cv2.circle(img, xy, 2, color=(255,0,0), thickness=2)
+#    for xy in radonSelections:
+#        xy = xy[0], xy[1]
+#        cv2.circle(img, xy, 2, color=(255, 0, 0), thickness=2)
     #plt.plot(X, y, color="red", label="solution line", linewidth=2)
     #plt.legend()  # Draw Legend
     #plt.show()
@@ -145,24 +158,8 @@ def plotParabola(img, model):
 def getBestFit(results):
     return max([d for d in results], key=lambda x: x[2])
 
-p = optparse.OptionParser()
-p.add_option("-H", "--hough", dest="hough", action="store_true")
-p.add_option("-N", "--nearest", dest="nearest", action="store_true")
-p.add_option("-L", "--least-squares", dest="least_squares", action="store_true")
-p.add_option("-R", "--ransac", dest="ransac", action="store_true")
-p.add_option("-s", "--seek", dest="seek", type="int")
-p.add_option("-v", "--video", dest="video")
-opts, args = p.parse_args()
 
-
-frame = 0
-
-# else:
-#im = cv2.imread('images/parabola_exemplo1.png')
-#im = cv2.imread('images/guitar2.jpg')
-im = cv2.imread('images/parabola_exemplo1.png')
-
-#filter_im = cv2.bilateralFilter(im, 35, 150, 200)
+im = cv2.imread('images/parab_x2.png')
 
 edges = canny(im)
 
@@ -173,22 +170,24 @@ hough_lines = None
 
 draw = im
 
-if 1:
-    f = track(filtered)
+f = track(filtered)
 
-    n = 3 # min fit
-    k = 500 # iterations
-    t = 0.2 # threshold
-    d = 10 # min number of points within threshold
+n = 3 # min fit
+k = 500 # iterations
+t = 0.5 # threshold
+d = 10 # min number of points within threshold
 
-    model_iter = None
+model_iter = None
 
-    results = ransac(f, LmsModel(), n, k, t, d)
+results = ransac(f, LmsModel(), n, k, t, d)
 
-    bestfit = getBestFit(results)
+print(results)
 
-    plotParabola(draw, bestfit[0])
+bestfit = getBestFit(results)
 
+print('best fit', bestfit)
+
+plotParabola(draw, bestfit)
 
 plt.imshow(draw, interpolation='nearest')
 plt.show()

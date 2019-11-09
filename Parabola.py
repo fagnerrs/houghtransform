@@ -1,11 +1,18 @@
 from Image import *
+from ParabolaRansac import *
 
 imageHandler = Image()
 hough = Hough()
 
-image = cv2.imread('images/exemplo2.jpg')
 
-edges = imageHandler.getEdges(image)
+image, edges = imageHandler.getEdges('images/exemplo1.jpg')
 
-hough.find_lines(image, edges, [0, 360, 1])
+hough.find_lines(image, 100, edges, [-180, 180, 1])
+
+findParabola(image, edges)
+
+plt.imshow(image, interpolation='nearest')
+plt.show()
+
+
 

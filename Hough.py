@@ -6,9 +6,9 @@ from matplotlib import pyplot as plt
 
 class Hough:
 
-  def find_lines(self, image, edges, rangeTheta):
+  def find_lines(self, image, threshold, edges, rangeTheta):
     accumulator, thetas, rhos =  self.hough_transformation(edges, rangeTheta)
-    self.draw_lines(image, edges, accumulator, rhos, thetas)
+    self.draw_lines(image, edges, threshold, accumulator, rhos, thetas)
 
   def hough_transformation(self, edges, rangeTheta):
 
@@ -49,7 +49,7 @@ class Hough:
 
     return accum, thetas, rhos
 
-  def draw_lines(self, image, edges, accumulator, rhos, thetas):
+  def draw_lines(self, image, edges, threshold, accumulator, rhos, thetas):
 
     # Easiest peak finding based on max votes
     idx = np.argmax(accumulator)
@@ -61,7 +61,6 @@ class Hough:
 
     peeks = np.nonzero(accumulator)
 
-    threshold = 100
     for index in range(len(peeks[0])):
 
       accumX = peeks[1][index]
@@ -89,9 +88,3 @@ class Hough:
 
       cv2.line(image, pt1, pt2, (0, 0, 255), 1, cv2.LINE_AA)
       cv2.line(edges, pt1, pt2, (0, 0, 0), 15, cv2.LINE_AA)
-
-    #plt.imshow(edges, interpolation='nearest')
-    plt.imshow(image, interpolation='nearest')
-    plt.show()
-
-    return image, edges
