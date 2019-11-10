@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d075ced5-3013-4f07-8370-0a3a5ad70225" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ParabolaRansacOrigins.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Rotation1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hough.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hough.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HoughTransform1.py" beforeDir="false" afterPath="$PROJECT_DIR$/HoughTransform1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Image.py" beforeDir="false" afterPath="$PROJECT_DIR$/Image.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parabola.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parabola.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parabola_ransac.py" beforeDir="false" afterPath="$PROJECT_DIR$/ParabolaRansac.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ransac.py" beforeDir="false" afterPath="$PROJECT_DIR$/ransac1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParabolaRansac.py" beforeDir="false" afterPath="$PROJECT_DIR$/ParabolaRansac.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +131,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ParabolaRansacOrigins" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Rotation1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="OpenCvClass" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -143,7 +143,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ParabolaRansacOrigins.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Rotation1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -155,10 +155,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Parabola" />
-        <item itemvalue="Python.ParabolaRansac" />
-        <item itemvalue="Python.ParabolaRansacOrigins" />
-        <item itemvalue="Python.HoughTransform1" />
         <item itemvalue="Python.Image" />
+        <item itemvalue="Python.Rotation1" />
+        <item itemvalue="Python.HoughTransform1" />
+        <item itemvalue="Python.ParabolaRansac" />
       </list>
     </recent_temporary>
   </component>

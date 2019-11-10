@@ -1,20 +1,10 @@
-#!/usr/bin/python
-
-import sys
-import time
 import random
-from random import randint
-import optparse
-import math
 from parabola_mls import *
-from scipy.misc import *
-from matplotlib import pyplot as plt
-
 import cv2
 
 parabolaMls = ParabolaMls()
 
-class LmsModel:
+class ParabolaModel:
 
     def __init__(self):
         pass
@@ -30,17 +20,14 @@ class LmsModel:
 def ransac(data, model, minFit, iteractions, threshold, minpoints):
     results = []
     def iterator():
+
         for i in range(iteractions):
             sample = random.sample(data, minFit)
-            maybe_model = model.model(sample)
-            yield maybe_model
+            maybeModel = model.model(sample)
+            yield maybeModel
 
-    # keep a list of found models
-    models = {}
     for maybe_model in iterator():
-
         inliners = []
-
         for xy in data:
             f = model.fit(xy[0], xy[1], maybe_model)
 
@@ -48,22 +35,23 @@ def ransac(data, model, minFit, iteractions, threshold, minpoints):
                 inliners.append(xy)
 
         if len(inliners) > minpoints:
-
             this_model = model.model(inliners)
-
             results.append((this_model, inliners, len(inliners)))
-
 
     return results
 
-def plotParabola(img, model):
+def plotAndRotateParabola(img, model, theta):
     a, b, c, cost = model
     X = np.linspace(0, 900, dtype=int)  # draw 100 continuous points directly from 0 to 15
 
-    #for x in X:
-    #  y = a * (x ** 2) + b * x + c
-    #  xy = int(x), int(y)
-    #  cv2.circle(img, xy, 2, color=(255,0,0), thickness=2)
+    height, width, color = img.shape
+
+    ox = int(width / 2)
+    oy = int(height / 2)
+
+    theta = np.deg2rad(theta)
+    cosTheta = np.cos(theta)
+    sinTheta = np.sin(theta)
 
     for i in range(len(X) - 1):
       y1 = a * (X[i] ** 2) + b * X[i] + c
@@ -72,7 +60,13 @@ def plotParabola(img, model):
       x1 = X[i]
       x2 = X[i + 1]
 
-      cv2.line(img, (x1, int(y1)), (x2, int(y2)), color=(33, 231, 29), thickness=2)
+      qx1 = int(ox + cosTheta * (x1 - ox) + -sinTheta * (y1 - oy))
+      qy1 = int(oy + sinTheta * (x1 - ox) + cosTheta * (y1 - oy))
+
+      qx2 = int(ox + cosTheta * (x2 - ox) + -sinTheta * (y2 - oy))
+      qy2 = int(oy + sinTheta * (x2 - ox) + cosTheta * (y2 - oy))
+
+      cv2.line(img, (qx1, qy1), (qx2, qy2), color=(33, 231, 29), thickness=2)
 
 
 def getBestFit(results):
@@ -80,6 +74,7 @@ def getBestFit(results):
 
 
 def findParabola(image, edges):
+
     nonzero = np.nonzero(edges)
 
     data = []
@@ -92,8 +87,8 @@ def findParabola(image, edges):
     thershold = 0.1 # threshold
     minInliers = 10 # min number of points within threshold
 
-    results = ransac(data, LmsModel(), numFit, iteractions, thershold, minInliers)
+    results = ransac(data, ParabolaModel(), numFit, iteractions, thershold, minInliers)
 
     bestfit = getBestFit(results)
 
-    plotParabola(image, bestfit[0])
+    return image, bestfit[0]

@@ -1,15 +1,19 @@
 from Image import *
 from ParabolaRansac import *
+from Hough import *
 
 imageHandler = Image()
 hough = Hough()
 
+image, edges, nonzeros = imageHandler.getEdges('images/exemplo2.jpg')
 
-image, edges = imageHandler.getEdges('images/exemplo1.jpg')
+angle = hough.findAndClearLines(image, edges, 250)
 
-hough.find_lines(image, 100, edges, [-180, 180, 1])
+edges = imageHandler.rotate(angle, edges, nonzeros)
 
-findParabola(image, edges)
+image, bestFit = findParabola(image, edges)
+
+plotAndRotateParabola(image, bestFit, angle * -1)
 
 plt.imshow(image, interpolation='nearest')
 plt.show()

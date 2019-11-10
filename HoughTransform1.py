@@ -1,42 +1,54 @@
-# Python program to illustrate HoughLine
-# method for line detection
-import cv2
+import sys
+import math
+import cv2 as cv
 import numpy as np
 
-# Reading the required image in
-# which operations are to be done.
-# Make sure that the image is in the same
-# directory in which this python program is
-img = cv2.imread('images/exemplo2.jpg', cv2.IMREAD_GRAYSCALE)
 
-print('Img size', img.shape)
+def main(argv):
+  default_file = 'images/exemplo1.jpg'
+  filename = argv[0] if len(argv) > 0 else default_file
+  # Loads an image
+  src = cv.imread(cv.samples.findFile(filename), cv.IMREAD_GRAYSCALE)
+  # Check if image is loaded fine
+  if src is None:
+    print('Error opening image!')
+    print('Usage: hough_lines.py [image_name -- default ' + default_file + '] \n')
+    return -1
 
-# Apply edge detection method on the image
-edges = cv2.Canny(img, 50, 20, apertureSize=3)
+  dst = cv.Canny(src, 50, 200, None, 3)
 
-# Copy edges to the images that will display the results in BGR
-cdst = cv2.cvtColor(edges, cv2.COLOR_GRAY2BGR)
+  # Copy edges to the images that will display the results in BGR
+  cdst = cv.cvtColor(dst, cv.COLOR_GRAY2BGR)
+  cdstP = np.copy(cdst)
 
-# This returns an array of r and theta values
-lines = cv2.HoughLines(edges, 1, 360, 150)
+  lines = cv.HoughLines(dst, 1, np.pi / 180, 250, None, 0, 0)
 
-# The below for loop runs till r and theta values
-# are in the range of the 2d array
+  if lines is not None:
+    for i in range(0, len(lines)):
+      rho = lines[i][0][0]
+      theta = lines[i][0][1]
+      a = math.cos(theta)
+      b = math.sin(theta)
+      x0 = a * rho
+      y0 = b * rho
+      pt1 = (int(x0 + 1000 * (-b)), int(y0 + 1000 * (a)))
+      pt2 = (int(x0 - 1000 * (-b)), int(y0 - 1000 * (a)))
+      cv.line(cdst, pt1, pt2, (0, 0, 255), 3, cv.LINE_AA)
 
-# Draw the linesRR
-if lines is not None:
-  for i in range(0, len(lines)):
-    rho = lines[i][0][0]
-    theta = lines[i][0][1]
-    a = np.cos(theta)
-    b = np.sin(theta)
-    x0 = a * rho
-    y0 = b * rho
-    pt1 = (int(x0 + 1000 * (-b)), int(y0 + 1000 * (a)))
-    pt2 = (int(x0 - 1000 * (-b)), int(y0 - 1000 * (a)))
-    cv2.line(cdst, pt1, pt2, (0, 0, 255), 1, cv2.LINE_AA)
+  linesP = cv.HoughLinesP(dst, 1, np.pi / 180, 50, None, 50, 10)
 
-cv2.namedWindow( "Display window", cv2.WINDOW_NORMAL );
-cv2.imshow("Display window", cdst)
-cv2.waitKey(0);
+  if linesP is not None:
+    for i in range(0, len(linesP)):
+      l = linesP[i][0]
+      cv.line(cdstP, (l[0], l[1]), (l[2], l[3]), (0, 0, 255), 3, cv.LINE_AA)
 
+  #cv.imshow("Source", src)
+  cv.imshow("Detected Lines (in red) - Standard Hough Line Transform", cdst)
+  #cv.imshow("Detected Lines (in red) - Probabilistic Line Transform", cdstP)
+
+  cv.waitKey()
+  return 0
+
+
+if __name__ == "__main__":
+  main(sys.argv[1:])
