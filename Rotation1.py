@@ -1,9 +1,4 @@
-
-import numpy as np
-from Hough import *
 from HoughParabola import *
-import cv2
-from matplotlib import pyplot as plt
 
 theta = 360
 R1 = np.array([[round(np.cos(theta)), round(np.sin(theta))],

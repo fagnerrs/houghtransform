@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UFRGS - Introdução à Visão Computacional</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.min.css') }}" />
+
+</head>
+<body>
+<div class="container">
+
+    <h3>Introdução à Visão Computacional</h3>
+    <h4>Prof. Dr. Cláudio Rosito Jung</h4>
+    <br>
+    <h4>Parabola Detection</h4>
+
+    <form action="{{ url_for('process') }}" method="POST" enctype="multipart/form-data">
+        <div class="row">
+
+            <div class="file-field col-8">
+                <div class="row">
+                  <img id="imgcontainer" src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="img-fluid" alt="Parabola image">
+                </div>
+
+                <div class="row">
+                    <button type="button" class="btn btn-outline-primary">
+                         <div>
+                            <input id="imageinput" type="file" name="file" accept="image/*" onchange="readImage(this)">
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <h4>RANSAC</h4>
+                <div class="form-group">
+                    <label for="num-iteractions">Number of Iteractions</label>
+                    <input type="number" class="form-control" id="num-iteractions" name="num-iteractions" aria-describedby="emailHelp" value="500" placeholder="Enter number of iteractions">
+                  </div>
+                <div class="form-group">
+                    <label for="num-inliers">Minimum Inliers</label>
+                    <input type="number" class="form-control" id="num-inliers" name="num-inliers" value="10" placeholder="Enter minimum of inliers">
+                </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <label for="num-threshold">Threshold</label>
+                        <input type="number" class="form-control" id="num-threshold" name="num-threshold" value="0.1" placeholder="Enter threashold">
+                    </div>
+                    <div class="form-group col">
+                        <label for="num-parabola-points">Minimum Points</label>
+                        <input type="number" class="form-control" id="num-parabola-points" name="num-parabola-points" value="3" placeholder="Enter minimum of points">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success btn-block">Detect Parabola</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<script src="{{ url_for('static', filename='js/bootstrap/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/parabola.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery/jquery-3.4.1.min.js') }}"></script>
+
+</body>
+
+</html>

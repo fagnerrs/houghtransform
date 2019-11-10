@@ -69,11 +69,11 @@ def plotAndRotateParabola(img, model, theta):
       cv2.line(img, (qx1, qy1), (qx2, qy2), color=(33, 231, 29), thickness=2)
 
 
-def getBestFit(results):
+def getEquation(results):
     return max([d for d in results], key=lambda x: x[2])
 
 
-def findParabola(image, edges):
+def findParabola(image, edges, numThreshold, numInliers, numParabolaPoints, numIteractions):
 
     nonzero = np.nonzero(edges)
 
@@ -82,13 +82,13 @@ def findParabola(image, edges):
     for index in range(len(nonzero[0])):
         data.append([nonzero[1][index], nonzero[0][index]])
 
-    numFit = 5 # Number of points to predict parabola
-    iteractions = 500 # iterations
-    thershold = 0.1 # threshold
-    minInliers = 10 # min number of points within threshold
+    numFit = numParabolaPoints # Number of points to predict parabola
+    iteractions = numIteractions # iterations
+    thershold = numThreshold # threshold
+    minInliers = numInliers # min number of points within threshold
 
     results = ransac(data, ParabolaModel(), numFit, iteractions, thershold, minInliers)
 
-    bestfit = getBestFit(results)
+    equation = getEquation(results)
 
-    return image, bestfit[0]
+    return image, equation[0]

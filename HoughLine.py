@@ -1,5 +1,3 @@
-import numpy as np
-from Hough import *
 from HoughParabola import *
 import cv2
 from matplotlib import pyplot as plt
