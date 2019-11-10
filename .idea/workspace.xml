@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d075ced5-3013-4f07-8370-0a3a5ad70225" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/default.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/js/parabola.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/result.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hough.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Hough.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HoughLine.py" beforeDir="false" afterPath="$PROJECT_DIR$/HoughLine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Image.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Image.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parabola.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Parabola.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ParabolaRansac.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/ParabolaRansac.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rotation1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Rotation1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/images/exemplo1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/images/exemplo1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/images/exemplo2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/images/exemplo2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Hough.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Hough.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

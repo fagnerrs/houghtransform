@@ -26,7 +26,7 @@ class Hough:
       pt1 = (int(x0 + 1000 * (-b)), int(y0 + 1000 * (a)))
       pt2 = (int(x0 - 1000 * (-b)), int(y0 - 1000 * (a)))
 
-      cv2.line(image, pt1, pt2, (0, 0, 255), 1, cv2.LINE_AA)
+      cv2.line(image, pt1, pt2, (255, 0, 0), 1, cv2.LINE_AA)
       cv2.line(edges, pt1, pt2, (0, 0, 0), 15, cv2.LINE_AA)
 
     return angles
